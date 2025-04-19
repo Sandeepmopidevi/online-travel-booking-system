@@ -7,15 +7,22 @@ import { PackagesComponent } from './features/packages/packages.component';
 import { PaymentComponent } from './features/payments/payment.component';
 import { ReviewsComponent } from './features/reviews/reviews.component';
 import { UnauthorizedComponent } from './shared/components/unauthorized/unauthorized.component';
-
+//import { AuthGuard } from './core/guards/';
+//import { RoleGuard } from './core/guards/role.guard';
+import { SearchComponent } from './search/search.component';
+import { ResultsComponent } from './results/results.component';
+import { BookingConfirmationComponent } from './booking-confirmation/booking-confirmation.component';
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'dashboard', component: DashboardComponent }, // Removed AuthGuard
-  { path: 'booking', component: BookingComponent }, // Removed AuthGuard
-  { path: 'packages', component: PackagesComponent }, // Removed AuthGuard
-  { path: 'payments', component: PaymentComponent }, // Removed AuthGuard
-  { path: 'reviews', component: ReviewsComponent }, // Removed AuthGuard
+  { path: 'dashboard', component: DashboardComponent }, 
+  { path: 'booking', component: BookingComponent }, 
+  { path: 'packages', component: PackagesComponent }, 
+  { path: 'payments', component: PaymentComponent }, 
+  { path: 'reviews', component: ReviewsComponent },
   { path: 'unauthorized', component: UnauthorizedComponent },
+  {path: 'search', component: SearchComponent}, // Added SearchComponent route
+  {path: 'results', component: ResultsComponent}, // Added ResultsComponent route
+  {path: 'booking-confirmation', component: BookingConfirmationComponent}, // Added BookingConfirmationComponent route
 ];

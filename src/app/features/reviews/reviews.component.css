@@ -1,0 +1,89 @@
+/* Reviews container */
+.reviews-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+  }
+  
+  /* Title and subtitle */
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  /* Reviews wrapper */
+  .reviews-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  /* Review card */
+  .review-card {
+    flex: 1 1 300px;
+    max-width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Review header */
+  .review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .reviewer-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #007BFF;
+  }
+  
+  .review-date {
+    font-size: 0.9rem;
+    color: #888;
+  }
+  
+  /* Star rating */
+  .review-rating {
+    margin-bottom: 15px;
+  }
+  
+  .fas.fa-star {
+    font-size: 1rem;
+    color: #FFD700;
+  }
+  
+  .fas.fa-star.filled {
+    color: #FFD700; /* Gold for filled stars */
+  }
+  
+  .fas.fa-star.empty {
+    color: #ccc; /* Gray for empty stars */
+  }
+  
+  /* Review comment */
+  .review-comment {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+  }

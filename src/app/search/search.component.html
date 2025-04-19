@@ -1,0 +1,43 @@
+<div class="search-container">
+    <h2>Search for Bookings</h2>
+    <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+      <div class="form-group">
+        <label for="searchType">Search Type</label>
+        <select id="searchType" formControlName="searchType" class="form-control">
+          <option value="hotel">Hotel</option>
+          <option value="flight">Flight</option>
+          <option value="package">Holiday Package</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input
+          type="text"
+          id="location"
+          formControlName="location"
+          class="form-control"
+          placeholder="Enter location"
+        />
+      </div>
+      <div class="form-group">
+        <label for="checkInDate">Check-In Date</label>
+        <input type="date" id="checkInDate" formControlName="checkInDate" class="form-control" />
+      </div>
+      <div class="form-group" *ngIf="searchForm.value.searchType === 'hotel'">
+        <label for="checkOutDate">Check-Out Date</label>
+        <input type="date" id="checkOutDate" formControlName="checkOutDate" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="travelers">Number of Travelers</label>
+        <input
+          type="number"
+          id="travelers"
+          formControlName="travelers"
+          class="form-control"
+          placeholder="Enter number of travelers"
+          min="1"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>

@@ -1,0 +1,9 @@
+<div class="results-container">
+    <h2>Search Results</h2>
+    <div *ngFor="let result of results" class="result-card">
+      <h3>{{ result.name }}</h3>
+      <p>{{ result.description }}</p>
+      <p>Price: {{ result.price }}</p>
+      <button class="btn btn-primary" (click)="onBook(result)">Book Now</button>
+    </div>
+  </div>
