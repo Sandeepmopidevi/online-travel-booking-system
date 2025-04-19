@@ -12,6 +12,10 @@ import { UnauthorizedComponent } from './shared/components/unauthorized/unauthor
 import { SearchComponent } from './search/search.component';
 import { ResultsComponent } from './results/results.component';
 import { BookingConfirmationComponent } from './booking-confirmation/booking-confirmation.component';
+import { ItineraryManagementComponent } from './itinerary-management/itinerary-management.component';
+import { PackageManagementComponent } from './package-management/package-management.component';
+import { PackageItineraryService } from './shared/components/package-itinerary.service';
+
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -25,4 +29,6 @@ export const routes: Routes = [
   {path: 'search', component: SearchComponent}, // Added SearchComponent route
   {path: 'results', component: ResultsComponent}, // Added ResultsComponent route
   {path: 'booking-confirmation', component: BookingConfirmationComponent}, // Added BookingConfirmationComponent route
+  {path: 'itinerary-management', component: ItineraryManagementComponent}, // Added ItineraryManagementComponent route
+  {path: 'package-management', component: PackageManagementComponent}, // Added PackageManagementComponent route
 ];

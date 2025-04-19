@@ -1,0 +1,51 @@
+<div class="itinerary-container">
+    <h2>Available Itineraries</h2>
+    <div class="itinerary-card" *ngFor="let itinerary of itineraries">
+      <h3>{{ itinerary.name }}</h3>
+      <p>{{ itinerary.details }}</p>
+      <p><strong>Price:</strong> {{ itinerary.price | currency:'INR' }}</p>
+      <button class="btn btn-primary" (click)="customizeItinerary(itinerary)">
+        Customize Itinerary
+      </button>
+    </div>
+  
+    <div *ngIf="selectedItinerary" class="customization-form">
+      <h2>Customize Itinerary</h2>
+      <form [formGroup]="customizeForm" (ngSubmit)="saveCustomization()">
+        <div class="form-group">
+          <label for="name">Itinerary Name</label>
+          <input
+            id="name"
+            formControlName="name"
+            type="text"
+            class="form-control"
+            placeholder="Enter itinerary name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="details">Details</label>
+          <textarea
+            id="details"
+            formControlName="details"
+            class="form-control"
+            placeholder="Enter itinerary details"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input
+            id="price"
+            formControlName="price"
+            type="number"
+            class="form-control"
+            placeholder="Enter itinerary price"
+            min="1"
+          />
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelCustomization()">
+          Cancel
+        </button>
+      </form>
+    </div>
+  </div>

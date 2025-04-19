@@ -1,0 +1,80 @@
+<div class="package-management-container">
+    <h2>Create Vacation Package</h2>
+    <form [formGroup]="packageForm" (ngSubmit)="onCreatePackage()" class="form-grid">
+      <div class="form-group">
+        <label for="packageName">Package Name</label>
+        <input
+          id="packageName"
+          formControlName="packageName"
+          type="text"
+          class="form-control"
+          placeholder="Enter package name"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          formControlName="description"
+          class="form-control"
+          placeholder="Enter package description"
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input
+          id="price"
+          formControlName="price"
+          type="number"
+          class="form-control"
+          placeholder="Enter package price"
+          min="1"
+        />
+      </div>
+      <div class="form-group">
+        <label for="hotels">Hotels</label>
+        <input
+          id="hotels"
+          formControlName="hotels"
+          type="text"
+          class="form-control"
+          placeholder="Enter hotel options"
+        />
+      </div>
+      <div class="form-group">
+        <label for="flights">Flights</label>
+        <input
+          id="flights"
+          formControlName="flights"
+          type="text"
+          class="form-control"
+          placeholder="Enter flight options"
+        />
+      </div>
+      <div class="form-group">
+        <label for="activities">Activities</label>
+        <input
+          id="activities"
+          formControlName="activities"
+          type="text"
+          class="form-control"
+          placeholder="Enter optional activities"
+        />
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Create Package</button>
+      </div>
+    </form>
+  
+    <h3>Created Packages</h3>
+    <div class="packages-list">
+      <div class="package-card" *ngFor="let package of packages">
+        <h4>{{ package.packageName }}</h4>
+        <p><strong>Description:</strong> {{ package.description }}</p>
+        <p><strong>Price:</strong> {{ package.price | currency }}</p>
+        <p><strong>Hotels:</strong> {{ package.hotels }}</p>
+        <p><strong>Flights:</strong> {{ package.flights }}</p>
+        <p><strong>Activities:</strong> {{ package.activities }}</p>
+      </div>
+    </div>
+  </div>
