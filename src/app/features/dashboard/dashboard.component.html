@@ -1,0 +1,32 @@
+<div class="dashboard-container">
+    <button class="toggle-sidebar-btn" (click)="toggleSidebar()">☰</button>
+    <div class="dashboard-header">
+      <h1>{{ title }}</h1>
+    </div>
+  
+    <div class="dashboard-content">
+      <aside class="dashboard-sidebar" [class.collapsed]="isSidebarCollapsed">
+        <ul>
+          <li><a href="/dashboard">Home</a></li>
+          <li><a href="/dashboard/profile">Profile</a></li>
+          <li><a href="/dashboard/settings">Settings</a></li>
+        </ul>
+      </aside>
+  
+      <main class="dashboard-main">
+        <section class="stats">
+          <div class="stats-item" *ngFor="let stat of stats">
+            <h3>{{ stat.label }}</h3>
+            <p>{{ stat.current }}</p>
+          </div>
+        </section>
+  
+        <section class="widgets">
+          <h2>Recent Activities</h2>
+          <ul>
+            <li *ngFor="let activity of recentActivities">{{ activity }}</li>
+          </ul>
+        </section>
+      </main>
+    </div>
+  </div>

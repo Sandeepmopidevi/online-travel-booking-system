@@ -1,0 +1,12 @@
+<div class="packages-container">
+    <h2 class="title">Choose Your Package</h2>
+    <p class="subtitle">Select the best package for your perfect experience.</p>
+    <div class="packages-wrapper">
+      <div class="package-tile" *ngFor="let package of packages">
+        <h3 class="package-name">{{ package.name }}</h3>
+        <p class="package-description">{{ package.description }}</p>
+        <p class="package-price">{{ package.price }}</p>
+        <button class="btn-primary">Book Now</button>
+      </div>
+    </div>
+  </div>

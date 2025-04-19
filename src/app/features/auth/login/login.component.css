@@ -1,0 +1,137 @@
+/* Container styles */
+/* Login container styles */
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #f9f9f9;
+    font-family: 'Roboto', sans-serif;
+    overflow: visible; /* Ensure child elements are not hidden */
+}
+
+/* Heading styles */
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700; /* Bold font */
+    color: #333;
+    font-size: 24px; /* Increased font size */
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-size: 16px; /* Slightly larger font */
+    color: #555;
+    margin-bottom: 5px;
+    font-weight: 500; /* Medium weight */
+}
+
+input {
+    width: 100%;
+    padding: 12px; /* Increased padding */
+    font-size: 16px; /* Slightly larger font */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s, box-shadow 0.3s; /* Added box-shadow transition */
+    font-family: 'Roboto', sans-serif; /* Consistent font */
+}
+
+input:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.5); /* Added glowing effect */
+}
+
+input:hover {
+    cursor: text; /* Cursor changes to text pointer */
+}
+
+/* Invalid input styles */
+.is-invalid {
+    border-color: red;
+    box-shadow: 0 0 6px rgba(255, 0, 0, 0.5); /* Added red glowing effect */
+}
+
+/* Error message styles */
+.error {
+    font-size: 14px; /* Slightly larger font */
+    color: red;
+    margin-top: 5px;
+    font-style: italic; /* Italicized text for emphasis */
+}
+
+/* Button styles */
+button {
+    width: 100%;
+    padding: 12px; /* Increased padding */
+    font-size: 18px; /* Larger font size for better readability */
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s; /* Added box-shadow transition */
+    font-family: 'Roboto', sans-serif; /* Consistent font */
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.7); /* Added glowing effect */
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Slightly enlarges button */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Added shadow effect */
+    cursor: pointer;
+}
+
+/* Register Link Section */
+.register-link {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.register-link p {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.register-link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+/* Ensure the register link is visible */
+.register-link {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.register-link p {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.register-link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}

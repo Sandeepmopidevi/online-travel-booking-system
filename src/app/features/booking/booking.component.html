@@ -1,0 +1,112 @@
+<div class="booking-container" @fadeIn>
+    <h2>Reserve Your Spot</h2>
+    <p class="welcome-text">Plan your perfect evening with us. Please fill out the details below to confirm your reservation.</p>
+    <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()" class="tile-form">
+      <!-- Name Tile -->
+      <div class="tile">
+        <label for="name"><i class="fas fa-user"></i> Name</label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          placeholder="Enter your full name"
+          [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
+        />
+        <div *ngIf="submitted && f['name'].errors" class="error">
+          <div *ngIf="f['name'].errors?.['required']">Name is required.</div>
+          <div *ngIf="f['name'].errors?.['minlength']">Name must be at least 3 characters.</div>
+        </div>
+      </div>
+  
+      <!-- Email Tile -->
+      <div class="tile">
+        <label for="email"><i class="fas fa-envelope"></i> Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="Enter your email address"
+          [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+        />
+        <div *ngIf="submitted && f['email'].errors" class="error">
+          <div *ngIf="f['email'].errors?.['required']">Email is required.</div>
+          <div *ngIf="f['email'].errors?.['email']">Enter a valid email address.</div>
+        </div>
+      </div>
+  
+      <!-- Phone Tile -->
+      <div class="tile">
+        <label for="phone"><i class="fas fa-phone"></i> Phone</label>
+        <input
+          type="text"
+          id="phone"
+          formControlName="phone"
+          placeholder="Enter your phone number"
+          [ngClass]="{ 'is-invalid': submitted && f['phone'].errors }"
+        />
+        <div *ngIf="submitted && f['phone'].errors" class="error">
+          <div *ngIf="f['phone'].errors?.['required']">Phone number is required.</div>
+          <div *ngIf="f['phone'].errors?.['pattern']">Enter a valid 10-digit phone number.</div>
+        </div>
+      </div>
+  
+      <!-- Booking Date Tile -->
+      <div class="tile">
+        <label for="bookingDate"><i class="fas fa-calendar-alt"></i> Date</label>
+        <input
+          type="date"
+          id="bookingDate"
+          formControlName="bookingDate"
+          [ngClass]="{ 'is-invalid': submitted && f['bookingDate'].errors }"
+        />
+        <div *ngIf="submitted && f['bookingDate'].errors" class="error">
+          Booking date is required.
+        </div>
+      </div>
+  
+      <!-- Booking Time Tile -->
+      <div class="tile">
+        <label for="bookingTime"><i class="fas fa-clock"></i> Time</label>
+        <input
+          type="time"
+          id="bookingTime"
+          formControlName="bookingTime"
+          [ngClass]="{ 'is-invalid': submitted && f['bookingTime'].errors }"
+        />
+        <div *ngIf="submitted && f['bookingTime'].errors" class="error">
+          Booking time is required.
+        </div>
+      </div>
+  
+      <!-- Number of Guests Tile -->
+      <div class="tile">
+        <label for="guests"><i class="fas fa-users"></i> Number of Guests</label>
+        <input
+          type="number"
+          id="guests"
+          formControlName="guests"
+          placeholder="Enter the number of guests"
+          min="1"
+          [ngClass]="{ 'is-invalid': submitted && f['guests'].errors }"
+        />
+        <div *ngIf="submitted && f['guests'].errors" class="error">
+          <div *ngIf="f['guests'].errors?.['required']">Number of guests is required.</div>
+          <div *ngIf="f['guests'].errors?.['min']">There must be at least 1 guest.</div>
+        </div>
+      </div>
+  
+      <!-- Action Buttons -->
+      <div class="tile action-tile">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [@buttonHover]="buttonState"
+          (mouseenter)="buttonState = 'hovered'"
+          (mouseleave)="buttonState = 'default'"
+        >
+          Confirm Booking
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="onReset()">Reset</button>
+      </div>
+    </form>
+  </div>
