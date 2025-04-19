@@ -1,0 +1,25 @@
+<div class="support-container">
+    <h2>Customer Support</h2>
+    <form [formGroup]="supportForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="issue">Issue</label>
+        <input id="issue" type="text" formControlName="issue" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" formControlName="description" class="form-control"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="supportForm.invalid">Submit</button>
+    </form>
+  
+    <h3>Submitted Tickets</h3>
+    <ul>
+      <li *ngFor="let ticket of tickets; let i = index">
+        <strong>{{ ticket.issue }}</strong> - {{ ticket.description }}
+        <span [ngClass]="{'open': ticket.status === 'Open', 'closed': ticket.status === 'Closed'}">
+          ({{ ticket.status }})
+        </span>
+        <button *ngIf="ticket.status === 'Open'" class="btn btn-secondary" (click)="closeTicket(i)">Close</button>
+      </li>
+    </ul>
+  </div>

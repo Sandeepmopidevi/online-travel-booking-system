@@ -4,9 +4,10 @@
     margin: 30px auto;
     padding: 25px;
     border-radius: 10px;
-    background-color: #fff;
+    background: linear-gradient(to bottom, #ffffff, #f9f9f9); /* Subtle gradient */
     font-family: 'Roboto', sans-serif;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+    animation: fadeIn 0.5s ease-in-out; /* Add fade-in animation */
   }
   
   /* Header Styling */
@@ -15,6 +16,7 @@
     text-align: center;
     color: #333;
     font-size: 2rem;
+    animation: slideInDown 0.5s ease-in-out; /* Slide effect */
   }
   
   h3 {
@@ -36,6 +38,7 @@
   .form-group {
     display: flex;
     flex-direction: column;
+    animation: fadeInUp 0.5s ease-in-out; /* Add animation for fields */
   }
   
   label {
@@ -52,13 +55,14 @@
     border-radius: 5px;
     font-size: 14px;
     outline: none;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; /* Add smooth transition */
   }
   
   input:focus,
   textarea:focus {
     border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    transform: scale(1.02); /* Slight zoom effect */
   }
   
   textarea {
@@ -73,18 +77,19 @@
   
   button {
     padding: 12px 20px;
-    background-color: #007bff;
+    background: linear-gradient(to right, #007bff, #0056b3); /* Gradient background */
     color: #fff;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s; /* Add smooth transition */
   }
   
   button:hover {
-    background-color: #0056b3;
+    background: linear-gradient(to right, #0056b3, #003f7f); /* Darker gradient on hover */
     transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
   }
   
   /* Packages List */
@@ -98,16 +103,18 @@
   /* Individual Package Card */
   .package-card {
     padding: 20px;
-    background-color: #f8f9fa;
+    background: linear-gradient(to bottom, #ffffff, #f8f9fa); /* Subtle gradient */
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s; /* Smooth transitions */
+    animation: fadeIn 0.5s ease-in-out;
   }
   
   .package-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    background-color: #eef3ff; /* Highlight background on hover */
   }
   
   .package-card h4 {
@@ -130,5 +137,39 @@
   
     .form-actions {
       grid-column: span 1;
+    }
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }

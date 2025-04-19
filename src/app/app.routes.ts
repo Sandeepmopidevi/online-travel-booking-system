@@ -14,8 +14,8 @@ import { ResultsComponent } from './results/results.component';
 import { BookingConfirmationComponent } from './booking-confirmation/booking-confirmation.component';
 import { ItineraryManagementComponent } from './itinerary-management/itinerary-management.component';
 import { PackageManagementComponent } from './package-management/package-management.component';
-import { PackageItineraryService } from './shared/components/package-itinerary.service';
-
+import { CustomerSupportComponent } from './customer-support/customer-support.component';
+import { ReviewComponent } from './review/review.component';
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -31,4 +31,6 @@ export const routes: Routes = [
   {path: 'booking-confirmation', component: BookingConfirmationComponent}, // Added BookingConfirmationComponent route
   {path: 'itinerary-management', component: ItineraryManagementComponent}, // Added ItineraryManagementComponent route
   {path: 'package-management', component: PackageManagementComponent}, // Added PackageManagementComponent route
+  {path: 'customer-support', component: CustomerSupportComponent}, // Added CustomerSupportComponent route
+  {path: 'review', component: ReviewComponent}, // Added ReviewComponent route
 ];
