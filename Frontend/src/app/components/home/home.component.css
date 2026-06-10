@@ -1,0 +1,165 @@
+/* Header Section */
+.home-header {
+  margin-top: 50px;
+  background: linear-gradient(to right, #00c8ff, #6610f2);
+  color: #fff;
+  padding: 100px 0;
+  text-align: center;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.home-header h1 {
+  font-weight: bold;
+  font-size: 3.5rem;
+}
+
+.home-header .btn.glow-effect {
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 30px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease-in-out;
+}
+
+.home-header .btn.glow-effect:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  transform: scale(1.05);
+}
+
+/* Content Section */
+.home-content {
+  background-color: #f9f9f9;
+}
+
+.section-heading {
+  font-weight: bold;
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  text-align: center; /* Center content inside the card */
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon {
+  font-size: 3rem;
+  color: #007bff;
+  margin: 15px auto; /* Center the icon horizontally */
+  display: block; /* Ensure the icon behaves as a block element */
+}
+
+/* Footer Section */
+.home-footer {
+  background-color: #2c3e50;
+  color: white;
+}
+
+.home-footer p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* General Styles for Mobile Screens */
+@media (max-width: 768px) {
+  /* Header Section */
+  .home-header {
+    padding: 60px 0;
+  }
+
+  .home-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .home-header .btn.glow-effect {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  /* Content Section */
+  .section-heading {
+    font-size: 2rem;
+  }
+
+  .card {
+    margin-bottom: 20px;
+  }
+
+  .card-icon {
+    font-size: 2.5rem;
+  }
+
+  /* Footer Section */
+  .home-footer p {
+    font-size: 12px;
+  }
+}
+
+/* Extra Small Screens */
+@media (max-width: 576px) {
+  /* Header Section */
+  .home-header {
+    padding: 40px 0;
+  }
+
+  .home-header h1 {
+    font-size: 2rem;
+  }
+
+  .home-header p.lead {
+    font-size: 14px;
+  }
+
+  .home-header .btn.glow-effect {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  /* Content Section */
+  .home-content {
+    padding: 20px 10px;
+  }
+
+  .section-heading {
+    font-size: 1.8rem;
+  }
+
+  .card h5.card-title {
+    font-size: 1rem;
+  }
+
+  .card p.card-text {
+    font-size: 0.9rem;
+  }
+
+  .card-icon {
+    font-size: 2rem;
+  }
+
+  /* Footer Section */
+  .home-footer {
+    padding: 10px 0;
+  }
+
+  .home-footer p {
+    font-size: 10px;
+  }
+}

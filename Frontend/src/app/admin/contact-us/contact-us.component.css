@@ -1,0 +1,92 @@
+/* Main container styling */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 200px; /* Increased margin from the top to create more space below the header */
+    padding: 20px; /* Add padding for better spacing */
+    background-color: #f8f9fa; /* Light background for the container */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  }
+  
+  /* Header styling */
+  h2 {
+    color: #2c3e50; /* Darker color for better readability */
+    margin-top: 50px;
+    font-size: 2rem; /* Slightly larger font size for prominence */
+    font-weight: bold;
+    text-align: center; /* Center the heading */
+    border-bottom: 2px solid #007bff; /* Add a blue underline */
+    padding-bottom: 10px; /* Space between text and underline */
+  }
+  
+  /* Table styling */
+  .table {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Rounded table corners */
+    overflow: hidden; /* Ensure table doesn't overflow rounded corners */
+    margin-top: 20px; /* Add space between table and other elements */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  /* Table header and cell styling */
+  .table th,
+  .table td {
+    text-align: left;
+    vertical-align: middle;
+    padding: 12px 15px; /* Add padding for better spacing */
+  }
+  
+  .table th {
+    background-color: #007bff; /* Blue background for table headers */
+    color: #fff; /* White text for headers */
+    font-weight: bold;
+  }
+  
+  .table td {
+    border-top: 1px solid #ddd; /* Add borders between rows */
+  }
+  
+  /* Alternating row background color */
+  .table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light gray background for alternate rows */
+  }
+  
+  /* Row hover effect */
+  .table tr:hover {
+    background-color: #e9ecef; /* Highlight row on hover */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+  }
+  
+  /* Muted text styling */
+  .text-muted {
+    font-size: 1rem; /* Adjust font size for better responsiveness */
+    color: #6c757d; /* Subtle gray color */
+    text-align: center; /* Center the text */
+    margin-top: 20px; /* Add spacing above the text */
+  }
+  
+  /* Responsive adjustments for medium screens (e.g., tablets and small desktops) */
+  @media (max-width: 992px) {
+    .container {
+      margin-top: 150px; /* Slightly reduce the top margin for medium screens */
+    }
+  }
+  
+  /* Responsive adjustments for small screens (e.g., mobile phones) */
+  @media (max-width: 576px) {
+    .container {
+      margin-top: 100px; /* Further reduce the top margin for small screens */
+    }
+  
+    .table th,
+    .table td {
+      font-size: 0.9rem; /* Reduce font size for table content */
+      padding: 8px; /* Adjust padding for smaller screens */
+    }
+  
+    h2 {
+      font-size: 1.5rem; /* Decrease font size of the heading */
+    }
+  }

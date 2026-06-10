@@ -1,0 +1,268 @@
+<div class="container mt-5 flights-container">
+  <h1 class="text-center mb-4">Flight Management</h1>
+
+  <!-- Search Flights -->
+  <div class="row mb-4">
+    <div class="col-md-5">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Boarding City"
+        [(ngModel)]="searchCriteria.boardingCity"
+      />
+    </div>
+    <div class="col-md-5">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Destination City"
+        [(ngModel)]="searchCriteria.destinationCity"
+      />
+    </div>
+    <div class="col-md-2 d-grid">
+      <button class="btn btn-primary" (click)="searchFlights()">Search</button>
+    </div>
+  </div>
+
+  <!-- Add New Flight Form -->
+  <div class="card mb-4" *ngIf="!editingFlight">
+    <div class="card-header">
+      <h3>Add New Flight</h3>
+    </div>
+    <div class="card-body">
+      <form (submit)="addFlight(); $event.preventDefault()">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="airline" class="form-label">Airline</label>
+            <input
+              type="text"
+              id="airline"
+              class="form-control"
+              placeholder="Enter airline name"
+              [(ngModel)]="newFlight.airline"
+              name="airline"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="flightNumber" class="form-label">Flight Number</label>
+            <input
+              type="text"
+              id="flightNumber"
+              class="form-control"
+              placeholder="Enter flight number"
+              [(ngModel)]="newFlight.flightNumber"
+              name="flightNumber"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="boardingCity" class="form-label">Boarding City</label>
+            <input
+              type="text"
+              id="boardingCity"
+              class="form-control"
+              placeholder="Enter boarding city"
+              [(ngModel)]="newFlight.boardingCity"
+              name="boardingCity"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="destinationCity" class="form-label">Destination City</label>
+            <input
+              type="text"
+              id="destinationCity"
+              class="form-control"
+              placeholder="Enter destination city"
+              [(ngModel)]="newFlight.destinationCity"
+              name="destinationCity"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="departure" class="form-label">Departure</label>
+            <input
+              type="datetime-local"
+              id="departure"
+              class="form-control"
+              [(ngModel)]="newFlight.departure"
+              name="departure"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="arrival" class="form-label">Arrival</label>
+            <input
+              type="datetime-local"
+              id="arrival"
+              class="form-control"
+              [(ngModel)]="newFlight.arrival"
+              name="arrival"
+              required
+            />
+          </div>
+          <div class="col-md-3">
+            <label for="price" class="form-label">Price</label>
+            <input
+              type="number"
+              id="price"
+              class="form-control"
+              placeholder="Enter price"
+              [(ngModel)]="newFlight.price"
+              name="price"
+              required
+            />
+          </div>
+          <div class="col-md-3 d-flex align-items-center">
+            <label class="me-2">Availability:</label>
+            <input
+              type="checkbox"
+              [(ngModel)]="newFlight.availability"
+              name="availability"
+            />
+          </div>
+        </div>
+        <div class="mt-3 text-end">
+          <button class="btn btn-primary" type="submit">Add Flight</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Edit Flight Form -->
+  <div class="card mb-4" *ngIf="editingFlight">
+    <div class="card-header">
+      <h3>Edit Flight</h3>
+    </div>
+    <div class="card-body">
+      <form (submit)="updateFlight(); $event.preventDefault()">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">Airline</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="editingFlight.airline"
+              name="edit_airline"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Flight Number</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="editingFlight.flightNumber"
+              name="edit_flightNumber"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Boarding City</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="editingFlight.boardingCity"
+              name="edit_boardingCity"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Destination City</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="editingFlight.destinationCity"
+              name="edit_destinationCity"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Departure</label>
+            <input
+              type="datetime-local"
+              class="form-control"
+              [(ngModel)]="editingFlight.departure"
+              name="edit_departure"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Arrival</label>
+            <input
+              type="datetime-local"
+              class="form-control"
+              [(ngModel)]="editingFlight.arrival"
+              name="edit_arrival"
+              required
+            />
+          </div>
+          <div class="col-md-3">
+            <label class="form-label">Price</label>
+            <input
+              type="number"
+              class="form-control"
+              [(ngModel)]="editingFlight.price"
+              name="edit_price"
+              required
+            />
+          </div>
+          <div class="col-md-3 d-flex align-items-center">
+            <label class="me-2">Availability:</label>
+            <input
+              type="checkbox"
+              [(ngModel)]="editingFlight.availability"
+              name="edit_availability"
+            />
+          </div>
+        </div>
+        <div class="mt-3 text-end">
+          <button class="btn btn-success me-2" type="submit">Update Flight</button>
+          <button class="btn btn-secondary" type="button" (click)="cancelEdit()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Flights Table -->
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped flights-table">
+      <thead>
+        <tr>
+          <th>Airline</th>
+          <th>Flight Number</th>
+          <th>Boarding City</th>
+          <th>Destination City</th>
+          <th>Departure</th>
+          <th>Arrival</th>
+          <th>Price</th>
+          <th>Availability</th>
+          <th style="min-width: 145px;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let flight of filteredFlights">
+          <td>{{ flight.airline }}</td>
+          <td>{{ flight.flightNumber }}</td>
+          <td>{{ flight.boardingCity }}</td>
+          <td>{{ flight.destinationCity }}</td>
+          <td>{{ flight.departure | date: 'short' }}</td>
+          <td>{{ flight.arrival | date: 'short' }}</td>
+          <td>{{ flight.price | currency: 'INR' }}</td>
+          <td>
+            <span [class]="flight.availability ? 'available' : 'unavailable'">
+              {{ flight.availability ? 'Available' : 'Unavailable' }}
+            </span>
+          </td>
+          <td>
+            <div class="d-flex justify-content-center gap-2">
+              <button class="btn btn-warning btn-sm" (click)="editFlight(flight)" [disabled]="editingFlight">Edit</button>
+              <button class="btn btn-danger btn-sm" (click)="deleteFlight(flight.flightID)">Delete</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

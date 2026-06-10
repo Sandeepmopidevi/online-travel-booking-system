@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Contact Us Messages</h2>
+  
+  <div *ngIf="contactMessages.length > 0; else noMessages">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Message</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let message of contactMessages; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ message.name }}</td>
+          <td>{{ message.email }}</td>
+          <td>{{ message.message }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noMessages>
+    <p class="text-center text-muted">No messages found.</p>
+  </ng-template>
+</div>

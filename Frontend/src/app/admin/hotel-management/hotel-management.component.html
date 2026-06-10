@@ -1,0 +1,147 @@
+<div class="hotel-management">
+  <h2>Hotel Management</h2>
+  <!-- Search bar beside text boxes -->
+  <div class="row mb-3 align-items-end">
+    <div class="col-auto">
+      <label for="searchHotelName" class="form-label hotel-label mb-0">Hotel Name</label>
+      <input
+        id="searchHotelName"
+        type="text"
+        placeholder="Search by hotel name"
+        [(ngModel)]="searchQuery"
+        class="form-control"
+      />
+    </div>
+    <div class="col-auto">
+      <label for="searchHotelLocation" class="form-label hotel-label mb-0">Location</label>
+      <input
+        id="searchHotelLocation"
+        type="text"
+        placeholder="Search by location"
+        [(ngModel)]="locationQuery"
+        class="form-control"
+      />
+    </div>
+    <div class="col-auto">
+      <button class="btn btn-primary" (click)="onSearchTriggered()">Search</button>
+    </div>
+  </div>
+
+  <!-- Form for creating or editing a hotel -->
+  <form (ngSubmit)="onSubmit()" class="hotel-form" novalidate>
+    <div class="form-group row">
+      <div class="col">
+        <label for="hotelName" class="form-label hotel-label">Hotel Name</label>
+        <input
+          id="hotelName"
+          type="text"
+          placeholder="Hotel Name"
+          [(ngModel)]="hotelForm.name"
+          name="name"
+          required
+          class="form-control"
+        />
+        <div *ngIf="submitted && validationErrors.name" class="text-danger mt-1">
+          {{ validationErrors.name }}
+        </div>
+      </div>
+      <div class="col">
+        <label for="hotelLocation" class="form-label hotel-label">Location</label>
+        <input
+          id="hotelLocation"
+          type="text"
+          placeholder="Location"
+          [(ngModel)]="hotelForm.location"
+          name="location"
+          required
+          class="form-control"
+        />
+        <div *ngIf="submitted && validationErrors.location" class="text-danger mt-1">
+          {{ validationErrors.location }}
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col">
+        <label for="roomsAvailable" class="form-label hotel-label">Rooms Available</label>
+        <input
+          id="roomsAvailable"
+          type="number"
+          placeholder="Rooms Available"
+          [(ngModel)]="hotelForm.roomsAvailable"
+          name="roomsAvailable"
+          required
+          class="form-control"
+        />
+        <div *ngIf="submitted && validationErrors.roomsAvailable" class="text-danger mt-1">
+          {{ validationErrors.roomsAvailable }}
+        </div>
+      </div>
+      <div class="col">
+        <label for="rating" class="form-label hotel-label">Rating (1-5)</label>
+        <input
+          id="rating"
+          type="number"
+          placeholder="Rating (1-5)"
+          [(ngModel)]="hotelForm.rating"
+          name="rating"
+          step="0.1"
+          required
+          class="form-control"
+        />
+        <div *ngIf="submitted && validationErrors.rating" class="text-danger mt-1">
+          {{ validationErrors.rating }}
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="pricePerNight" class="form-label hotel-label">Price Per Night</label>
+      <input
+        id="pricePerNight"
+        type="number"
+        placeholder="Price Per Night"
+        [(ngModel)]="hotelForm.pricePerNight"
+        name="pricePerNight"
+        required
+        class="form-control"
+      />
+      <div *ngIf="submitted && validationErrors.pricePerNight" class="text-danger mt-1">
+        {{ validationErrors.pricePerNight }}
+      </div>
+    </div>
+
+    <div class="button-group mt-2">
+      <button type="submit" class="primary">
+        {{ editingHotelId ? 'Update Hotel' : 'Create Hotel' }}
+      </button>
+      <button type="button" class="secondary" (click)="resetForm()">Clear</button>
+    </div>
+  </form>
+
+  <!-- Table to display the list of hotels -->
+  <table class="hotel-table mt-4">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Rooms</th>
+        <th>Rating</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let hotel of hotels">
+        <td>{{ hotel.name }}</td>
+        <td>{{ hotel.location }}</td>
+        <td>{{ hotel.roomsAvailable }}</td>
+        <td>{{ hotel.rating }}</td>
+        <td>{{ hotel.pricePerNight }}</td>
+        <td>
+          <button class="edit" (click)="editHotel(hotel)">Edit</button>
+          <button class="delete" (click)="deleteHotel(hotel.hotelID)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

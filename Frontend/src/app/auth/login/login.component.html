@@ -1,0 +1,49 @@
+<div class="auth-container">
+  <h2>Login</h2>
+  <form (ngSubmit)="onSubmit(loginFormRef)" #loginFormRef="ngForm" novalidate>
+    <div class="form-group">
+      <input
+        type="email"
+        placeholder="Email"
+        [(ngModel)]="loginForm.email"
+        name="email"
+        required
+        email
+        #email="ngModel"
+        [ngClass]="{
+          'is-invalid': email.invalid && (email.dirty || email.touched || submitted),
+          'is-valid': email.valid && (email.dirty || email.touched || submitted)
+        }"
+        autocomplete="username"
+      />
+      <div *ngIf="email.invalid && (email.dirty || email.touched || submitted)" class="invalid-feedback">
+        Email is required and must be valid.
+      </div>
+    </div>
+    <div class="form-group">
+      <input
+        type="password"
+        placeholder="Password"
+        [(ngModel)]="loginForm.password"
+        name="password"
+        required
+        minlength="6"
+        #password="ngModel"
+        [ngClass]="{
+          'is-invalid': password.invalid && (password.dirty || password.touched || submitted),
+          'is-valid': password.valid && (password.dirty || password.touched || submitted)
+        }"
+        autocomplete="current-password"
+      />
+      <div *ngIf="password.invalid && (password.dirty || password.touched || submitted)" class="invalid-feedback">
+        Password is required (min 6 characters).
+      </div>
+    </div>
+    <button type="submit" class="primary">
+      Login
+    </button>
+  </form>
+  <div class="register-link">
+    <p>Not a user? <a routerLink="/register">Register here</a></p>
+  </div>
+</div>

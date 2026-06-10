@@ -1,0 +1,63 @@
+.hotel-review-container {
+    max-width: 430px;
+    margin: 38px auto 10px auto;
+    background: #f9fbfe;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(32, 101, 209, 0.09);
+    padding: 32px 24px 28px 24px;
+  }
+  .star-rating {
+    display: inline-block;
+  }
+  .star {
+    font-size: 2.2rem;
+    color: #d7dbdf;
+    cursor: pointer;
+    transition: color 0.18s, text-shadow 0.16s;
+    margin: 0 2px;
+    font-style: normal;
+    position: relative;
+  }
+  .star::before {
+    content: '★';
+  }
+  .star.filled {
+    color: #ffc107;
+    text-shadow: 0 0 10px #ffd95d, 0 0 2px #dfa400;
+  }
+  .star.shine {
+    animation: starShine 0.8s cubic-bezier(0.2,0.8,0.2,1);
+  }
+  @keyframes starShine {
+    0% {transform: scale(1);}
+    30% {transform: scale(1.4) rotate(-5deg);}
+    55% {transform: scale(1.18) rotate(3deg);}
+    100% {transform: scale(1);}
+  }
+  .feedback-face {
+    font-size: 2rem;
+    height: 2.2rem;
+    min-height: 2rem;
+  }
+  .face {
+    vertical-align: middle;
+    transition: transform 0.2s;
+  }
+  .face-1 { color: #e94a4a; transform: scale(1.2);}
+  .face-2 { color: #edb100; transform: scale(1.15);}
+  .face-3 { color: #a6b0bb;}
+  .face-4 { color: #21b573; transform: scale(1.1);}
+  .face-5 { color: #ff6bcb; text-shadow: 0 0 8px #ffd6f7; transform: scale(1.2);}
+  .face-0 { color: #b2b2b2;}
+  .thanks-container {
+    padding: 28px 0 10px 0;
+  }
+  .shining-star {
+    text-align: center;
+    font-size: 3.6rem;
+  }
+  .shining-star .star {
+    color: #ffc107;
+    text-shadow: 0 0 18px #ffd95d, 0 0 7px #dfa400;
+    animation: starShine 1s cubic-bezier(0.2,0.8,0.2,1) 1;
+  }

@@ -1,0 +1,128 @@
+/* Sidebar Styles */
+.sidebar {
+  position: fixed;
+  top: 56px; /* Match Header height (bootstrap navbar height is 56px by default) */
+  left: 0;
+  width: 220px;
+  height: calc(100% - 56px);
+  background-color: #343a40;
+  padding-top: 20px;
+  overflow-x: hidden;
+  transition: width 0.3s;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  border-top: none; /* remove white gap */
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+/* Collapsed state */
+.sidebar.collapsed {
+  width: 70px;
+}
+
+/* Sidebar Menu Items */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1; /* Allow the menu to take up remaining space */
+}
+
+.sidebar ul li {
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.sidebar ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.sidebar ul li a .sidebar-text {
+  margin-left: 10px;
+  color: #fff;
+  transition: opacity 0.3s, width 0.3s;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.sidebar.collapsed ul li a .sidebar-text {
+  opacity: 0;
+  width: 0;
+}
+
+/* Hover effect for menu items */
+.sidebar ul li a:hover {
+  background-color: #1abc9c;
+  border-radius: 8px;
+  color: #fff;
+}
+
+/* Sidebar icons */
+.sidebar ul li i {
+  font-size: 20px;
+  width: 25px;
+  text-align: center;
+  color: #fff;
+}
+
+.sidebar.collapsed ul li i {
+  width: auto;
+}
+
+/* Logout Section */
+.logout-section {
+  margin-top: auto;
+  padding: 15px 20px;
+}
+
+.logout-section button {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 16px;
+  color: #fff;
+  background-color: #dc3545;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+/* Logout icon always visible */
+.logout-section button i {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+/* Hide logout text in collapsed mode */
+.sidebar.collapsed .logout-section .sidebar-text {
+  opacity: 0;
+  width: 0;
+  transition: opacity 0.3s, width 0.3s;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Show logout text in expanded mode */
+.sidebar .logout-section .sidebar-text {
+  opacity: 1;
+  width: auto;
+  transition: opacity 0.3s, width 0.3s;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.logout-section button:hover {
+  background-color: #b52d3b;
+}

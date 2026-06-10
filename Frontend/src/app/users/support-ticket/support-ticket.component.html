@@ -1,0 +1,20 @@
+<div class="support-ticket-container">
+    <h2>Write an Issue</h2>
+    <form (ngSubmit)="submitTicket()" class="ticket-form">
+      <div class="form-group">
+        <label for="issue">Describe your issue</label>
+        <textarea
+          id="issue"
+          [(ngModel)]="issue"
+          name="issue"
+          class="form-control"
+          rows="5"
+          placeholder="Describe your issue here..."
+          required
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="isLoading || userId === null">
+        {{ isLoading ? 'Submitting...' : 'Submit Issue' }}
+      </button>
+    </form>
+  </div>

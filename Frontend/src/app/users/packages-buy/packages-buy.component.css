@@ -1,0 +1,155 @@
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+.card.package-card {
+  border-radius: 18px;
+  box-shadow: 0 6px 28px rgba(32, 101, 209, 0.10);
+  transition: box-shadow 0.25s, transform 0.18s;
+  background: #f8fafc;
+}
+
+.card.package-card:hover {
+  box-shadow: 0 12px 38px rgba(32, 101, 209, 0.13), 0 1.5px 4px 0 rgba(0,0,0,0.06);
+  transform: translateY(-4px) scale(1.01);
+}
+
+/* Special Price Badge Styling & Animation */
+.special-price-badge {
+  background: linear-gradient(90deg, #2065d1 0%, #43e97b 100%);
+  border-radius: 1.8em;
+  font-size: 1.18rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  box-shadow: 0 2px 8px rgba(67, 233, 123, 0.16), 0 1.5px 8px 0 rgba(32, 101, 209, 0.06);
+  animation: glowBadge 1.4s infinite alternate;
+}
+
+@keyframes glowBadge {
+  0% {
+    box-shadow: 0 2px 8px rgba(67, 233, 123, 0.12), 0 1.5px 8px 0 rgba(32, 101, 209, 0.08);
+    filter: brightness(1);
+    transform: scale(1);
+  }
+  100% {
+    box-shadow: 0 4px 16px rgba(67, 233, 123, 0.28), 0 3px 14px 0 rgba(32,101,209,0.16);
+    filter: brightness(1.07);
+    transform: scale(1.04);
+  }
+}
+
+/* Prevent text shifting/jumping in badge */
+.special-price-label,
+.special-price-value {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1.15;
+  font-size: 1.13em;
+  font-family: inherit;
+}
+
+/* Gradient Button */
+.btn-gradient-primary {
+  background: linear-gradient(90deg, #2196f3 0%, #21cbf3 100%);
+  color: #fff;
+  border: none;
+  border-radius: 1.5rem;
+  font-weight: 500;
+  padding: 0.65em 1.6em;
+  transition: background 0.18s, box-shadow 0.18s, transform 0.13s;
+}
+
+.btn-gradient-primary:hover, .btn-gradient-primary:focus {
+  background: linear-gradient(90deg, #21cbf3 0%, #2196f3 100%);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(33, 203, 243, 0.13);
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Spinner */
+.spinner-border {
+  margin: 32px auto;
+  display: block;
+  width: 3rem;
+  height: 3rem;
+}
+
+/* List Item Alignment Fix */
+.list-unstyled li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+}
+
+.item-label {
+  font-weight: 600;
+  color: #506080;
+  font-size: 1.05em;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.item-value {
+  font-weight: 500;
+  color: #1a2a36;
+  font-size: 1.05em;
+  line-height: 1.3;
+  vertical-align: baseline;
+  display: inline-block;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Responsive adjustment for value width */
+@media (max-width: 991.98px) {
+  .container {
+    padding: 26px 10px 24px 10px;
+  }
+  .card.package-card {
+    margin-bottom: 18px;
+  }
+  .item-value {
+    max-width: 120px;
+  }
+}
+@media (max-width: 767.98px) {
+  .container {
+    padding: 8px 3px;
+  }
+  .card.package-card {
+    margin-bottom: 12px;
+  }
+  .special-price-badge {
+    font-size: 1rem;
+    padding: 0.6em 1.1em;
+  }
+  .item-value {
+    max-width: 90px;
+  }
+}
+
+/* Utility classes */
+.text-muted {
+  color: #a6b0bb !important;
+  font-size: 1.12em;
+}
+.text-primary {
+  color: #2065d1 !important;
+}
+.fw-bold {
+  font-weight: 700 !important;
+}
+.fw-semibold {
+  font-weight: 600 !important;
+}
+.deal-note {
+  font-size: 0.98em;
+}
+
+.list-unstyled {
+  margin-bottom: 0;
+}

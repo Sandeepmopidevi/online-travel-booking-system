@@ -1,0 +1,82 @@
+<div class="payment-container">
+  <h2 class="text-center mb-4">Stayora Payment Page</h2>
+
+  <!-- Countdown Timer -->
+  <div class="timer text-center mb-3">
+    <p>Time left to complete payment: <strong>{{ timer }} seconds</strong></p>
+  </div>
+
+  <!-- Payment Method Selection -->
+  <div class="payment-methods mb-4">
+    <label class="form-label">Select Payment Method:</label>
+    <div>
+      <button class="btn btn-outline-primary me-2" (click)="selectPaymentMethod('Credit')">Credit</button>
+      <button class="btn btn-outline-secondary me-2" (click)="selectPaymentMethod('Debit')">Debit</button>
+      <button class="btn btn-outline-success" (click)="selectPaymentMethod('UPI QR')">UPI QR</button>
+    </div>
+  </div>
+
+  <!-- Display Selected Payment Method -->
+  <div *ngIf="paymentMethod" class="selected-method text-center mb-4">
+    <h3>{{ selectedPaymentMessage }}</h3>
+  </div>
+
+  <!-- Credit/Debit Card Payment Form -->
+  <div *ngIf="paymentMethod === 'Credit' || paymentMethod === 'Debit'" class="card-details">
+    <h4>Enter Card Details</h4>
+    <input
+      type="text"
+      class="form-control mb-2"
+      placeholder="Card Number (16 digits)"
+      [(ngModel)]="cardNumber"
+      (input)="validateCardDetails()"
+    />
+    <input
+      type="text"
+      class="form-control mb-2"
+      placeholder="CVV (3 digits)"
+      [(ngModel)]="cvv"
+      (input)="validateCardDetails()"
+    />
+    <div class="d-flex">
+      <input
+        type="text"
+        class="form-control me-2"
+        placeholder="MM"
+        [(ngModel)]="expiryMonth"
+        (input)="validateCardDetails()"
+      />
+      <input
+        type="text"
+        class="form-control"
+        placeholder="YYYY"
+        [(ngModel)]="expiryYear"
+        (input)="validateCardDetails()"
+      />
+    </div>
+  </div>
+
+  <!-- UPI QR Payment -->
+  <div *ngIf="paymentMethod === 'UPI QR'" class="upi-qr text-center">
+    <h4>Scan UPI QR Code</h4>
+    <p>UPI ID: <strong>{{ upiId }}</strong></p>
+    <img src="./assets/upi-qr-placeholder.png" alt="UPI QR Code" class="img-fluid mb-3" />
+    <p>Use the above UPI ID in your UPI app to complete the payment.</p>
+  </div>
+
+  <!-- Payment Button -->
+  <div class="text-center mt-4">
+    <button class="btn btn-primary btn-lg" (click)="processPayment()">Pay Now</button>
+  </div>
+
+  <!-- Rating Prompt: Shown after successful payment -->
+  <app-rating-prompt
+    *ngIf="showRatingPrompt"
+    id="rating-prompt"
+    [type]="type"
+    [hotelId]="hotelID"
+    [packageId]="packageID"
+    [flightId]="flightID"
+    [userId]="userId">
+  </app-rating-prompt>
+</div>

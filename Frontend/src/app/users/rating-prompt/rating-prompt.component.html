@@ -1,0 +1,46 @@
+<div class="hotel-review-container" *ngIf="type && userId">
+    <h4 class="text-center mb-2">
+      Rate your {{ type }} experience
+    </h4>
+    <form (ngSubmit)="submitReview()" class="review-form">
+      <div class="form-group text-center mb-3">
+        <div class="star-rating">
+          <ng-container *ngFor="let star of [1,2,3,4,5]">
+            <i
+              class="star"
+              [class.filled]="(hoverRating || rating) >= star"
+              [class.shine]="rating === star && hoverRating === 0"
+              (mouseenter)="setHover(star)"
+              (mouseleave)="clearHover()"
+              (click)="setRating(star)">
+            </i>
+          </ng-container>
+        </div>
+        <div class="feedback-face mt-2">
+          <ng-container [ngSwitch]="rating || hoverRating">
+            <span *ngSwitchCase="1" class="face face-1">😭</span>
+            <span *ngSwitchCase="2" class="face face-2">😞</span>
+            <span *ngSwitchCase="3" class="face face-3">😐</span>
+            <span *ngSwitchCase="4" class="face face-4">🙂</span>
+            <span *ngSwitchCase="5" class="face face-5">😍</span>
+            <span *ngSwitchDefault class="face face-0">🙂</span>
+          </ng-container>
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label for="comment">Comment</label>
+        <textarea
+          id="comment"
+          [(ngModel)]="comment"
+          name="comment"
+          class="form-control"
+          rows="3"
+          placeholder="Write your review..."
+          required
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary w-100" [disabled]="isSubmitting || !rating">
+        {{ isSubmitting ? 'Submitting...' : 'Submit Review' }}
+      </button>
+    </form>
+  </div>

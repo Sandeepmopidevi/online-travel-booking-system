@@ -1,0 +1,62 @@
+<div class="container my-5">
+  <h2 class="text-center mb-4 display-5">Available Travel Packages</h2>
+
+  <!-- Loading Spinner -->
+  <div *ngIf="isLoading" class="text-center py-5">
+    <div class="spinner-border text-primary" role="status" style="width:3rem;height:3rem;">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Packages Display -->
+  <div class="row g-4" *ngIf="!isLoading && packages.length">
+    <div class="col-lg-4 col-md-6" *ngFor="let pkg of packages">
+      <div class="card h-100 shadow-sm package-card border-0">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title text-primary fw-bold mb-3 text-center">{{ pkg.name }}</h5>
+          <ul class="list-unstyled flex-grow-1">
+            <li class="mb-3 d-flex align-items-baseline">
+              <i class="bi bi-building text-secondary me-2 fs-5"></i>
+              <span class="item-label">Included Hotels:</span>
+              <span class="item-value ms-1" title="{{ pkg.includedHotels }}">{{ pkg.includedHotels }}</span>
+            </li>
+            <li class="mb-3 d-flex align-items-baseline">
+              <i class="bi bi-airplane text-secondary me-2 fs-5"></i>
+              <span class="item-label">Included Flights:</span>
+              <span class="item-value ms-1" title="{{ pkg.includedFlights }}">{{ pkg.includedFlights }}</span>
+            </li>
+            <li class="mb-3 d-flex align-items-baseline">
+              <i class="bi bi-basket2 text-secondary me-2 fs-5"></i>
+              <span class="item-label">Activities:</span>
+              <span class="item-value ms-1" title="{{ pkg.activities }}">{{ pkg.activities }}</span>
+            </li>
+          </ul>
+          <div class="mt-2 mb-3 text-center">
+            <span class="badge special-price-badge px-3 py-2 align-middle">
+              <i class="bi bi-stars me-1 text-warning"></i>
+              <span class="fw-bold text-light special-price-label">Special Price:</span>
+              <span class="fw-bold text-light special-price-value">₹{{ pkg.price | number:'1.0-0' }}</span>
+            </span>
+            <div class="deal-note mt-2 small text-success fw-semibold">
+              <i class="bi bi-fire text-danger"></i>
+              Limited Period Offer!
+            </div>
+          </div>
+          <button
+            class="btn btn-gradient-primary mt-auto fw-semibold"
+            (click)="navigateToPayment(pkg)"
+            [disabled]="isRedirecting"
+          >
+            <i class="bi bi-cart-check"></i>
+            {{ isRedirecting ? 'Redirecting...' : 'Book Now' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- No Packages Message -->
+  <div *ngIf="!isLoading && packages.length === 0" class="text-center py-5">
+    <p class="text-muted fs-5"><i class="bi bi-emoji-frown"></i> No packages available.</p>
+  </div>
+</div>

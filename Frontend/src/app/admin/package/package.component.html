@@ -1,0 +1,144 @@
+<div class="container">
+  <h2 class="mt-3 animated-heading">Manage Packages</h2>
+  <!-- Search Bar -->
+  <div class="search-bar mb-3">
+    <label for="searchInput" class="form-label fw-bold">Search by Package Name</label>
+    <input
+      id="searchInput"
+      type="text"
+      class="form-control shadow-sm"
+      placeholder="Search by package name"
+      [(ngModel)]="searchQuery"
+      (input)="searchPackages()"
+    />
+  </div>
+
+  <!-- Form Section -->
+  <form (ngSubmit)="onSubmit()" class="row g-3 mb-4 shadow p-4 rounded bg-light">
+    <div class="col-md-6">
+      <label for="packageName" class="form-label fw-bold">Package Name</label>
+      <input
+        id="packageName"
+        type="text"
+        class="form-control shadow-sm"
+        placeholder="Enter Package Name"
+        [(ngModel)]="editingPackage.name"
+        name="name"
+        required
+      />
+    </div>
+    <div class="col-md-6">
+      <label for="includedHotels" class="form-label fw-bold">Included Hotels</label>
+      <input
+        id="includedHotels"
+        type="text"
+        class="form-control shadow-sm"
+        placeholder="Enter Included Hotels"
+        [(ngModel)]="editingPackage.includedHotels"
+        name="includedHotels"
+        required
+      />
+    </div>
+    <div class="col-md-6">
+      <label for="includedFlights" class="form-label fw-bold">Included Flights</label>
+      <input
+        id="includedFlights"
+        type="text"
+        class="form-control shadow-sm"
+        placeholder="Enter Included Flights"
+        [(ngModel)]="editingPackage.includedFlights"
+        name="includedFlights"
+        required
+      />
+    </div>
+    <div class="col-md-6">
+      <label for="activities" class="form-label fw-bold">Activities</label>
+      <input
+        id="activities"
+        type="text"
+        class="form-control shadow-sm"
+        placeholder="Enter Activities"
+        [(ngModel)]="editingPackage.activities"
+        name="activities"
+        required
+      />
+    </div>
+    <div class="col-md-6">
+      <label for="price" class="form-label fw-bold">Price (₹)</label>
+      <input
+        id="price"
+        type="number"
+        class="form-control shadow-sm"
+        placeholder="Enter Price (₹)"
+        [(ngModel)]="editingPackage.price"
+        name="price"
+        required
+        min="0"
+      />
+    </div>
+    <div class="col-md-12 text-center">
+      <button type="submit" class="btn btn-primary btn-lg">
+        {{ isEditing ? 'Update Package' : 'Add Package' }}
+      </button>
+      <button
+        type="button"
+        *ngIf="isEditing"
+        class="btn btn-secondary btn-lg ms-2"
+        (click)="resetForm()"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+
+  <!-- Loading Spinner -->
+  <div *ngIf="loading" class="text-center mt-4">
+    <div class="spinner-border text-primary" role="status"></div>
+  </div>
+
+  <!-- No Packages Found -->
+  <div *ngIf="!loading && filteredPackages.length === 0" class="text-center mt-4">
+    <h4>No Packages Found</h4>
+  </div>
+
+  <!-- Packages Table -->
+  <div *ngIf="!loading && filteredPackages.length > 0" class="table-responsive mt-4">
+    <table class="table table-bordered table-striped shadow">
+      <thead class="table-primary">
+        <tr>
+          <th>Name</th>
+          <th>Hotels</th>
+          <th>Flights</th>
+          <th>Activities</th>
+          <th>Price (₹)</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pkg of filteredPackages" class="table-row">
+          <td>{{ pkg.name }}</td>
+          <td>{{ pkg.includedHotels }}</td>
+          <td>{{ pkg.includedFlights }}</td>
+          <td>{{ pkg.activities }}</td>
+          <td>{{ pkg.price | number }}</td>
+          <td class="action-buttons-cell">
+            <div class="action-buttons">
+              <button
+                class="btn btn-warning btn-sm"
+                (click)="startEdit(pkg)"
+              >
+                Edit
+              </button>
+              <button
+                class="btn btn-danger btn-sm"
+                (click)="deletePackage(pkg.packageID)"
+              >
+                Delete
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

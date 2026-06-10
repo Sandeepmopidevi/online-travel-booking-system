@@ -1,0 +1,20 @@
+<div class="container mt-5">
+  <div class="text-center mb-4">
+    <h1 class="animated-heading">GitHub Profiles</h1>
+    <p class="lead text-muted">Meet the contributors of this project and explore their GitHub profiles.</p>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-md-6 col-sm-12 mb-4" *ngFor="let contributor of contributors">
+      <div class="card contributor-card shadow-lg h-100">
+        <div class="card-body text-center">
+          <div class="profile-icon mb-3">
+            <i class="fab fa-github"></i>
+          </div>
+          <h5 class="card-title">{{ contributor.name }}</h5>
+          <a [href]="contributor.url" target="_blank" class="btn btn-outline-primary btn-sm">View GitHub Profile</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

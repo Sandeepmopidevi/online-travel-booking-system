@@ -1,0 +1,11 @@
+<app-header (sidebarToggle)="toggleSidebar()"></app-header>
+
+<div class="main-layout">
+  <ng-container *ngIf="isLoggedIn">
+    <app-sidebar [collapsed]="isSidebarCollapsed"></app-sidebar>
+  </ng-container>
+
+  <div class="content-area" [class.expanded]="isSidebarCollapsed">
+    <router-outlet></router-outlet>
+  </div>
+</div>

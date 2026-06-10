@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+.toast-top-center {
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: fixed;
+    z-index: 9999;
+  }

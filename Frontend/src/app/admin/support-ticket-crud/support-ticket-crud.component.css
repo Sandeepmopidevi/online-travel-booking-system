@@ -1,0 +1,138 @@
+.container {
+    max-width: 950px;
+    padding: 20px;
+    margin-top: 20px;
+    animation: fadeIn 1s ease-in;
+    background: #f6f9ff;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(32, 101, 209, 0.08);
+  }
+  
+  h2 {
+    font-weight: bold;
+    color: #2065d1;
+    margin-bottom: 24px;
+    text-align: center;
+    letter-spacing: 1px;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  .card {
+    border-radius: 14px;
+    box-shadow: 0 4px 18px rgba(32, 101, 209, 0.10);
+    margin-bottom: 1.5rem;
+    background-color: rgba(255,255,255,0.98);
+    border: none;
+  }
+  
+  .btn-success {
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    padding: 10px 24px;
+  }
+  
+  .btn-primary, .btn-secondary, .btn-danger, .btn-sm {
+    border-radius: 8px;
+    font-weight: 500;
+  }
+  
+  .btn-primary {
+    background: linear-gradient(90deg, #2065d1 0%, #3ba9fc 100%);
+    border: none;
+  }
+  
+  .btn-primary:hover, .btn-primary:focus {
+    background: linear-gradient(90deg, #3ba9fc 0%, #2065d1 100%);
+  }
+  
+  .btn-danger {
+    background-color: #e94a4a;
+    border: none;
+  }
+  
+  .btn-danger:hover, .btn-danger:focus {
+    background-color: #c93030;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    border: none;
+  }
+  
+  .btn-secondary:hover, .btn-secondary:focus {
+    background-color: #5a6268;
+  }
+  
+  .table-responsive {
+    margin-top: 20px;
+  }
+  
+  .table {
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.97);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+  }
+  
+  .table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.04em;
+  }
+  
+  .table th {
+    background: #e8f0fe;
+    color: #2065d1;
+    border-bottom: 2px solid #dbeafe;
+  }
+  
+  .table-row:hover, tbody tr:hover {
+    background-color: rgba(32, 101, 209, 0.07);
+    transition: background 0.2s;
+  }
+  
+  .btn-sm {
+    min-width: 70px;
+    font-size: 0.98em;
+    padding: 6px 16px;
+  }
+  
+  .spinner-border {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  
+  .form-label {
+    font-weight: 500;
+    color: #2065d1;
+  }
+  
+  .form-control, .form-select {
+    border-radius: 8px;
+    font-size: 1em;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    margin-bottom: 0.5rem;
+    transition: border-color 0.2s;
+  }
+  
+  .form-control:focus, .form-select:focus {
+    border-color: #2065d1;
+    box-shadow: 0 0 0 0.1rem rgba(32, 101, 209, 0.12);
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px);}
+    to { opacity: 1; transform: translateY(0);}
+  }
+  
+  @media (max-width: 992px) {
+    .container {
+      max-width: 99vw;
+      padding: 10px;
+    }
+    .card {
+      padding: 10px 6px;
+    }
+  }

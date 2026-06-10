@@ -1,0 +1,53 @@
+<div class="user-management">
+  <h2>User Management</h2>
+
+  <form (ngSubmit)="editMode ? updateUser() : createUser()" class="user-form">
+    <div class="form-group">
+      <input type="text" placeholder="Name" [(ngModel)]="newUser.name" name="name" required>
+      <input type="email" placeholder="Email" [(ngModel)]="newUser.email" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <input type="password" placeholder="Password" [(ngModel)]="newUser.password" name="password" required readonly>
+      <select [(ngModel)]="newUser.role" name="role" required>
+        <option value="" disabled selected>Select Role</option>
+        <option value="Admin">Admin</option>
+        <option value="Traveller">Traveller</option>
+        <option value="Hotel Manager">Hotel Manager</option>
+        <option value="Travel Agent">Travel Agent</option>
+      </select>
+      <input type="text" placeholder="Contact Number" [(ngModel)]="newUser.contactNumber" name="contactNumber" required>
+    </div>
+
+    <div class="button-group">
+      <button type="submit" class="primary">{{ editMode ? 'Update User' : 'Create User' }}</button>
+      <button type="button" (click)="cancelEdit()" *ngIf="editMode" class="secondary">Cancel</button>
+    </div>
+  </form>
+
+  <table class="user-table">
+    <thead>
+      <tr>
+        <th>UserId</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Contact Number</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.userId }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+        <td>{{ user.contactNumber }}</td>
+        <td>
+          <button (click)="startEdit(user)" class="edit">Edit</button>
+          <button (click)="deleteUser(user.userId)" class="delete">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

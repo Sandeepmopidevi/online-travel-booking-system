@@ -1,0 +1,106 @@
+<div class="auth-container">
+  <h2>Register</h2>
+  <form (ngSubmit)="onSubmit(registerFormRef)" #registerFormRef="ngForm" novalidate>
+    <div class="form-group">
+      <input
+        type="text"
+        placeholder="Name"
+        [(ngModel)]="registerForm.name"
+        name="name"
+        required
+        minlength="3"
+        #name="ngModel"
+        [ngClass]="{
+          'is-invalid': name.invalid && (name.dirty || name.touched || submitted),
+          'is-valid': name.valid && (name.dirty || name.touched || submitted)
+        }"
+      />
+      <div *ngIf="name.invalid && (name.dirty || name.touched || submitted)" class="invalid-feedback">
+        Name is required (min 3 characters).
+      </div>
+    </div>
+    <div class="form-group">
+      <input
+        type="email"
+        placeholder="Email"
+        [(ngModel)]="registerForm.email"
+        name="email"
+        required
+        email
+        #email="ngModel"
+        [ngClass]="{
+          'is-invalid': email.invalid && (email.dirty || email.touched || submitted),
+          'is-valid': email.valid && (email.dirty || email.touched || submitted)
+        }"
+      />
+      <div *ngIf="email.invalid && (email.dirty || email.touched || submitted)" class="invalid-feedback">
+        Valid email is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <input
+        type="password"
+        placeholder="Password"
+        [(ngModel)]="registerForm.password"
+        name="password"
+        required
+        minlength="6"
+        #password="ngModel"
+        [ngClass]="{
+          'is-invalid': password.invalid && (password.dirty || password.touched || submitted),
+          'is-valid': password.valid && (password.dirty || password.touched || submitted)
+        }"
+      />
+      <div *ngIf="password.invalid && (password.dirty || password.touched || submitted)" class="invalid-feedback">
+        Password is required (min 6 characters).
+      </div>
+    </div>
+    <div class="form-group">
+      <input
+        type="text"
+        placeholder="Contact Number"
+        [(ngModel)]="registerForm.contactNumber"
+        name="contactNumber"
+        pattern="^[0-9]{10}$"
+        required
+        #contactNumber="ngModel"
+        [ngClass]="{
+          'is-invalid': contactNumber.invalid && (contactNumber.dirty || contactNumber.touched || submitted),
+          'is-valid': contactNumber.valid && (contactNumber.dirty || contactNumber.touched || submitted)
+        }"
+      />
+      <div *ngIf="contactNumber.invalid && (contactNumber.dirty || contactNumber.touched || submitted)" class="invalid-feedback">
+        10 digit contact number is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <select
+        [(ngModel)]="registerForm.role"
+        name="role"
+        required
+        #role="ngModel"
+        [ngClass]="{
+          'is-invalid': role.invalid && (role.dirty || role.touched || submitted),
+          'is-valid': role.valid && (role.dirty || role.touched || submitted)
+        }"
+      >
+        <option value="" disabled selected>Select Role</option>
+        <option value="Admin">Admin</option>
+        <option value="Traveller">Traveller</option>
+        <option value="Hotel Manager">Hotel Manager</option>
+        <option value="Travel Agent">Travel Agent</option>
+      </select>
+      <div *ngIf="role.invalid && (role.dirty || role.touched || submitted)" class="invalid-feedback">
+        Please select a role.
+      </div>
+    </div>
+    <button type="submit" class="primary">
+      Register
+    </button>
+  </form>
+  <div class="login-link mt-3">
+    <p>Already Registered?
+      <button class="btn btn-link" routerLink="/login">Click Login</button>
+    </p>
+  </div>
+</div>

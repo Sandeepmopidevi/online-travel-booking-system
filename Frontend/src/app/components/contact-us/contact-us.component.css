@@ -1,0 +1,36 @@
+.container {
+  max-width: 900px;
+  margin: auto;
+  animation: fadeIn 1s ease-in-out;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #007bff;
+}
+
+form {
+  background-color: #f8f9fa;
+}
+
+button {
+  width: 100%;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+.table th {
+  background-color: #343a40;
+  color: #ffffff;
+}
+
+.table td {
+  vertical-align: middle;
+}
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

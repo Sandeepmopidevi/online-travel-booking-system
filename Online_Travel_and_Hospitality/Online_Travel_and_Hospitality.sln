@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Online_Travel_and_Hospitality", "Online_Travel_and_Hospitality\Online_Travel_and_Hospitality.csproj", "{C6ED2949-0B6B-4CE6-B29B-190B4E715BE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjectionTestProject", "DependencyInjectionTestProject\DependencyInjectionTestProject.csproj", "{522F11BF-A463-4117-ACA3-E9B448997EC5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6ED2949-0B6B-4CE6-B29B-190B4E715BE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6ED2949-0B6B-4CE6-B29B-190B4E715BE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6ED2949-0B6B-4CE6-B29B-190B4E715BE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6ED2949-0B6B-4CE6-B29B-190B4E715BE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{522F11BF-A463-4117-ACA3-E9B448997EC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{522F11BF-A463-4117-ACA3-E9B448997EC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{522F11BF-A463-4117-ACA3-E9B448997EC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{522F11BF-A463-4117-ACA3-E9B448997EC5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {12AE89F0-1AFB-49B9-A2C3-641605AB2727}
+	EndGlobalSection
+EndGlobal

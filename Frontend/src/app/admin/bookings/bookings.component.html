@@ -1,0 +1,77 @@
+<div class="container my-5">
+  <h2 class="text-center mb-4">Manage Bookings</h2>
+
+  <!-- Search Booking by ID -->
+  <div class="d-flex justify-content-end mb-3">
+    <input
+      type="text"
+      class="form-control w-25 me-2"
+      placeholder="Search Booking by ID"
+      [(ngModel)]="searchId"
+    />
+    <button class="btn btn-primary" (click)="searchBookingById()">Search</button>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover table-bordered align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th>Booking ID</th>
+          <th>Type</th>
+          <th>Status</th>
+          <th>User ID</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let booking of filteredBookings">
+          <ng-container *ngIf="editingBookingId === booking.bookingID; else displayRow">
+            <!-- Edit Row -->
+            <td>
+              <!-- Booking ID should be displayed or disabled for editing -->
+              <input [value]="booking.bookingID" class="form-control" type="text" disabled />
+            </td>
+            <td>
+              <select [(ngModel)]="editBookingForm.type" class="form-select">
+                <option value="Hotel">Hotel</option>
+                <option value="Package">Package</option>
+                <option value="Flight">Flight</option>
+              </select>
+            </td>
+            <td>
+              <select [(ngModel)]="editBookingForm.status" class="form-select">
+                <option>Confirmed</option>
+                <option>Pending</option>
+                <option>Cancelled</option>
+                <option>Completed</option>
+              </select>
+            </td>
+            <td>
+              <input [(ngModel)]="editBookingForm.userID" class="form-control" type="number" />
+            </td>
+            <td>
+              <button class="btn btn-success btn-sm me-2" (click)="saveEdit(booking.bookingID)">Save</button>
+              <button class="btn btn-secondary btn-sm" (click)="cancelEdit()">Cancel</button>
+            </td>
+          </ng-container>
+          <ng-template #displayRow>
+            <td>{{ booking.bookingID }}</td>
+            <td>{{ booking.type }}</td>
+            <td>{{ booking.status }}</td>
+            <td>{{ booking.userID }}</td>
+            <td>
+              <button class="btn btn-primary btn-sm me-2" (click)="startEdit(booking)">Edit</button>
+              <button class="btn btn-warning btn-sm" [disabled]="booking.status === 'Cancelled'" (click)="cancelBooking(booking)">
+                Cancel Booking
+              </button>
+            </td>
+          </ng-template>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="filteredBookings.length === 0" class="text-center mt-5">
+    <p class="text-muted">No bookings available.</p>
+  </div>
+</div>

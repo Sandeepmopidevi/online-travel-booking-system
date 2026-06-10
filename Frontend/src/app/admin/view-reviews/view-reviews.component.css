@@ -1,0 +1,147 @@
+.reviews-panel {
+  max-width: 950px;
+  margin: 40px auto;
+  background: #f8fafc;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(32, 101, 209, 0.09);
+  padding: 36px 28px 32px 28px;
+  border: 1.5px solid #c3cedb;
+}
+
+.reviews-panel h2 {
+  text-align: center;
+  color: #2065d1;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+}
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 18px;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.filter-bar label {
+  font-weight: 500;
+  color: #2065d1;
+  margin-right: 6px;
+}
+
+.filter-bar select.form-select {
+  min-width: 140px;
+  border-radius: 6px;
+  border: 1px solid #b1b9d0;
+  outline: none;
+}
+
+.reviews-panel .btn-outline-secondary {
+  border: 1px solid #b1b9d0;
+  color: #2065d1;
+  background: #f5f8fd;
+  transition: background 0.2s, color 0.2s;
+}
+.reviews-panel .btn-outline-secondary:hover {
+  color: #fff;
+  background: #2065d1;
+}
+
+.reviews-table {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(32,101,209,0.07);
+  margin-top: 14px;
+  padding: 0;
+}
+
+.table {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 0;
+  background: #fff;
+}
+
+.table th, .table td {
+  padding: 13px 10px;
+  text-align: center;
+  font-size: 1.08em;
+  vertical-align: middle;
+}
+
+.table th {
+  background: #e8f0fe;
+  color: #2065d1;
+  border-bottom: 2px solid #c3cedb;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #f6fafd;
+}
+
+.table-bordered {
+  border: 1px solid #c3cedb;
+}
+.table-bordered th, .table-bordered td {
+  border: 1px solid #c3cedb;
+}
+
+.table tr:hover {
+  background: #f3f8fe;
+}
+
+.stars {
+  font-size: 1.2em;
+  color: #d7dbdf;
+  letter-spacing: 1.5px;
+}
+
+.stars .filled {
+  color: #ffc107;
+  text-shadow: 0 0 4px #ffd95d, 0 0 1px #dfa400;
+}
+
+.badge.bg-secondary {
+  background: #a6b0bb !important;
+  font-size: 1em;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  font-size: 1.12em;
+  color: #a6b0bb !important;
+}
+
+.alert.alert-danger {
+  margin: 20px auto;
+  max-width: 550px;
+  border-radius: 8px;
+  font-size: 1.05em;
+}
+
+.spinner-border.text-primary {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+@media (max-width: 800px) {
+  .reviews-panel {
+    padding: 10px 2px;
+  }
+  .table {
+    font-size: 0.92em;
+  }
+  .filter-bar {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,58 @@
+<div class="container my-5">
+  <h2 class="text-center mb-4">My Bookings</h2>
+  
+  <!-- Filter Form -->
+  <form class="row mb-4 justify-content-center align-items-center g-2">
+    <div class="col-sm-6 col-md-4">
+      <select class="form-control" [(ngModel)]="filterType" name="filterType" (ngModelChange)="onFilterTypeChange($event)">
+        <option value="all">All Types</option>
+        <option value="hotel">Hotel</option>
+        <option value="package">Package</option>
+        <option value="flight">Flight</option>
+      </select>
+    </div>
+  </form>
+
+  <div *ngIf="isLoading" class="text-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <table *ngIf="!isLoading && filteredBookings.length" class="table table-bordered table-hover align-middle shadow">
+    <thead class="table-dark">
+      <tr>
+        <th>#ID</th>
+        <th>Type</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of filteredBookings">
+        <td>{{ booking.bookingID }}</td>
+        <td>{{ booking.type }}</td>
+        <td>
+          <span [ngClass]="{
+            'badge bg-success': booking.status === 'Confirmed',
+            'badge bg-warning text-dark': booking.status === 'Pending',
+            'badge bg-danger': booking.status === 'Cancelled' || booking.status === 'Refunded'
+          }">
+            {{ booking.status }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!isLoading && filteredBookings.length === 0" class="text-center">
+    <p class="text-muted">No bookings available.</p>
+  </div>
+
+  <!-- Info box for cancellation -->
+  <div *ngIf="!isLoading && bookings.length" class="alert alert-info text-center mt-4">
+    <strong>Need to cancel a booking?</strong> Contact the admin for cancellation requests.
+    <a href="http://localhost:4200/contact-us" class="btn btn-link p-0 align-baseline ms-2" style="color: #2065d1; text-decoration: underline;">
+      Contact Us
+    </a>
+  </div>
+</div>

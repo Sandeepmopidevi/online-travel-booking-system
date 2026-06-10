@@ -1,0 +1,74 @@
+<div class="user-itinerary-container">
+  <h2>Create Your Itinerary</h2>
+  <form (ngSubmit)="submitItinerary()" class="itinerary-form mb-5">
+    <div class="form-group">
+      <label for="customizationDetails">Customization Details</label>
+      <textarea id="customizationDetails" [(ngModel)]="customizationDetails" name="customizationDetails"
+        class="form-control" rows="4" placeholder="Describe your preferences, customizations, etc." required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="packageID">Package</label>
+      <select id="packageID" [(ngModel)]="packageID" name="packageID" class="form-control" required>
+        <option [ngValue]="null" disabled selected>Select a package</option>
+        <option *ngFor="let pkg of availablePackages" [ngValue]="pkg.packageID">
+          {{ pkg.name }}
+        </option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="isLoading || userID == null">
+      {{ isLoading ? 'Submitting...' : 'Create Itinerary' }}
+    </button>
+  </form>
+
+  <div class="my-4">
+    <h4>Your Itineraries</h4>
+    <div *ngIf="isLoading" class="text-center mb-3">
+      <div class="spinner-border text-primary"></div>
+    </div>
+    <div *ngIf="itineraries.length === 0 && !isLoading" class="text-muted text-center">
+      No itineraries found.
+    </div>
+    <div class="table-responsive" *ngIf="itineraries.length > 0">
+      <table class="table table-bordered itinerary-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Customization Details</th>
+            <th>Package</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let itinerary of itineraries">
+            <ng-container *ngIf="isEditing && editingId === itinerary.itineraryID; else displayRow">
+              <td>{{ itinerary.itineraryID }}</td>
+              <td>
+                <input [(ngModel)]="editForm.customizationDetails" class="form-control" />
+              </td>
+              <td>
+                <select [(ngModel)]="editForm.packageID" class="form-control">
+                  <option *ngFor="let pkg of availablePackages" [ngValue]="pkg.packageID">
+                    {{ pkg.name }}
+                  </option>
+                </select>
+              </td>
+              <td>
+                <button class="btn btn-success btn-sm me-2" (click)="submitEdit()">Save</button>
+                <button class="btn btn-secondary btn-sm" (click)="cancelEdit()">Cancel</button>
+              </td>
+            </ng-container>
+            <ng-template #displayRow>
+              <td>{{ itinerary.itineraryID }}</td>
+              <td>{{ itinerary.customizationDetails }}</td>
+              <td>{{ getPackageName(itinerary.packageID) }}</td>
+              <td>
+                <button class="btn btn-primary btn-sm me-2" (click)="startEdit(itinerary)">Edit</button>
+                <button class="btn btn-danger btn-sm" (click)="confirmDelete(itinerary.itineraryID)">Delete</button>
+              </td>
+            </ng-template>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,144 @@
+<div class="itinerary-management">
+  <h2>Itinerary Management</h2>
+
+  <!-- Want to Create? option -->
+  <div class="mb-4 text-end">
+    <button class="btn btn-outline-primary" (click)="openCreateForm()" *ngIf="!showCreateForm">
+      Want to Create?
+    </button>
+  </div>
+
+  <!-- Admin Create Itinerary Form (shown if showCreateForm is true) -->
+  <div *ngIf="showCreateForm" class="admin-create mb-4 p-3 rounded" style="background:#f1f7ff;">
+    <h5 class="mb-3" style="color:#2065d1;">Create New Itinerary</h5>
+    <form (ngSubmit)="submitCreate()" class="row g-2 align-items-end">
+      <div class="col-md-4">
+        <label for="createCustomizationDetails" class="form-label" style="color:#343a40;">Customization Details</label>
+        <input
+          id="createCustomizationDetails"
+          [(ngModel)]="createForm.customizationDetails"
+          name="createCustomizationDetails"
+          class="form-control"
+          placeholder="Customization Details"
+          required
+        />
+      </div>
+      <div class="col-md-3">
+        <label for="createUserID" class="form-label" style="color:#343a40;">User</label>
+        <select
+          id="createUserID"
+          [(ngModel)]="createForm.userID"
+          name="createUserID"
+          class="form-control"
+          required
+          [disabled]="userRole === 'TravelAgent'"
+        >
+          <option value="" disabled selected>Select User</option>
+          <option *ngFor="let user of users" [ngValue]="user.userId">
+            {{ user.name }} ({{ user.email }})
+          </option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label for="createPackageID" class="form-label" style="color:#343a40;">Package</label>
+        <select
+          id="createPackageID"
+          [(ngModel)]="createForm.packageID"
+          name="createPackageID"
+          class="form-control"
+          required
+        >
+          <option value="" disabled selected>Select Package</option>
+          <option *ngFor="let pkg of packages" [ngValue]="pkg.packageID">
+            {{ pkg.name }}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-2 d-flex gap-2">
+        <button type="submit" class="btn btn-success w-100" [disabled]="isCreating">
+          {{ isCreating ? 'Creating...' : 'Create' }}
+        </button>
+        <button type="button" class="btn btn-secondary w-100" (click)="cancelCreateForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Search Bar -->
+  <div class="search-bar mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search by User ID"
+      [(ngModel)]="searchUserId"
+      (input)="searchByUserId()"
+    />
+  </div>
+
+  <div *ngIf="isLoading" class="text-center my-4">
+    <div class="spinner-border text-primary"></div>
+  </div>
+
+  <div *ngIf="filteredItineraries.length === 0 && !isLoading" class="text-center my-4">
+    <span class="text-muted">No itineraries found.</span>
+  </div>
+
+  <div class="table-responsive" *ngIf="filteredItineraries.length > 0">
+    <table class="table itinerary-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Customization Details</th>
+          <th>User</th>
+          <th>Package</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let itinerary of filteredItineraries">
+          <ng-container *ngIf="isEditing && editingId === itinerary.itineraryID; else displayRow">
+            <td>{{ itinerary.itineraryID }}</td>
+            <td>
+              <input [(ngModel)]="itineraryForm.customizationDetails" class="form-control" />
+            </td>
+            <td>
+              <select [(ngModel)]="itineraryForm.userID" class="form-control" [disabled]="userRole === 'TravelAgent'">
+                <option *ngFor="let user of users" [ngValue]="user.userId">
+                  {{ user.name }} ({{ user.email }})
+                </option>
+              </select>
+            </td>
+            <td>
+              <select [(ngModel)]="itineraryForm.packageID" class="form-control">
+                <option *ngFor="let pkg of packages" [ngValue]="pkg.packageID">
+                  {{ pkg.name }}
+                </option>
+              </select>
+            </td>
+            <td>
+              <div class="action-btns">
+                <button class="btn btn-success btn-sm me-1" (click)="submitEdit()">Save</button>
+                <button class="btn btn-secondary btn-sm" (click)="cancelEdit()">Cancel</button>
+              </div>
+            </td>
+          </ng-container>
+          <ng-template #displayRow>
+            <td>{{ itinerary.itineraryID }}</td>
+            <td>{{ itinerary.customizationDetails }}</td>
+            <td>
+              {{ getUserName(itinerary.userID) }}
+            </td>
+            <td>
+              {{ getPackageName(itinerary.packageID) }}
+            </td>
+            <td>
+              <div class="action-btns">
+                <button class="btn btn-primary btn-sm me-1" (click)="startEdit(itinerary)">Edit</button>
+                <button class="btn btn-danger btn-sm" (click)="confirmDelete(itinerary.itineraryID)">Delete</button>
+              </div>
+            </td>
+          </ng-template>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

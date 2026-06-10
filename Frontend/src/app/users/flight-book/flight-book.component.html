@@ -1,0 +1,53 @@
+<div class="container my-5">
+    <h2 class="text-center mb-4">Available Flights</h2>
+    <form class="row mb-4 justify-content-center" (ngSubmit)="searchFlights()" autocomplete="off">
+      <div class="col-md-3 mb-2">
+        <input type="text" class="form-control" placeholder="From (Boarding City)" [(ngModel)]="from" name="from" />
+      </div>
+      <div class="col-md-3 mb-2">
+        <input type="text" class="form-control" placeholder="To (Destination City)" [(ngModel)]="to" name="to" />
+      </div>
+      <div class="col-md-3 mb-2">
+        <input type="text" class="form-control" placeholder="Airline" [(ngModel)]="airline" name="airline" />
+      </div>
+      <div class="col-md-2 mb-2">
+        <button class="btn btn-primary w-100" type="submit">Search</button>
+      </div>
+    </form>
+  
+    <div *ngIf="isLoading" class="text-center">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <div class="row" *ngIf="!isLoading && filteredFlights.length">
+      <div class="col-md-4 mb-4" *ngFor="let flight of filteredFlights">
+        <div class="card h-100">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ flight.airline }} - {{ flight.flightNumber }}</h5>
+            <p class="card-text">
+              <strong>From:</strong> {{ flight.boardingCity }} <br>
+              <strong>To:</strong> {{ flight.destinationCity }}
+            </p>
+            <p class="card-text">
+              <strong>Departure:</strong> {{ flight.departure | date: 'short' }}<br>
+              <strong>Arrival:</strong> {{ flight.arrival | date: 'short' }}
+            </p>
+            <p class="card-text">
+              <strong>Price:</strong> {{ flight.price | currency: 'INR' }}
+            </p>
+            <button
+              class="btn btn-primary mt-auto"
+              (click)="navigateToPayment(flight)"
+              [disabled]="isRedirecting || !flight.availability"
+            >
+              {{ isRedirecting ? 'Redirecting...' : (flight.availability ? 'Book Now' : 'Unavailable') }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!isLoading && filteredFlights.length === 0" class="text-center">
+      <p class="text-muted">No flights available based on your search.</p>
+    </div>
+  </div>

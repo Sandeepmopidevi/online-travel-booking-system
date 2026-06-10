@@ -1,0 +1,90 @@
+/* Header Section */
+.why-header {
+  background: linear-gradient(to right, #28a745, #20c997);
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+  margin-top: 50px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.why-header h1 {
+  font-weight: bold;
+  font-size: 3.5rem;
+}
+
+.why-header p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+/* Content Section */
+.why-content {
+  background-color: #f8f9fa;
+}
+
+.why-card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  background: linear-gradient(to bottom right, #ffffff, #e9ecef);
+  overflow: hidden;
+}
+
+.why-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon {
+  font-size: 3.5rem;
+  color: #28a745;
+  margin-bottom: -15px; /* Adjusted margin to visually blend the icon with the card */
+  display: block;
+  text-align: center;
+  animation: bounce 2s infinite;
+}
+
+.card-title {
+  font-weight: bold;
+  text-align: center;
+}
+
+.card-text {
+  font-size: 1rem;
+  text-align: center;
+  color: #6c757d;
+}
+
+/* Footer Section */
+.why-footer {
+  background-color: #2c3e50;
+  color: white;
+}
+
+.why-footer p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(5px);
+  }
+  20% {
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,110 @@
+<div class="ratings-crud-panel">
+    <h2>Review CRUD (Flights, Hotels, Packages)</h2>
+    <div class="filter-bar mb-3">
+      <label>Filter:</label>
+      <select [(ngModel)]="filterType" class="form-select d-inline-block w-auto ms-2">
+        <option value="All">All</option>
+        <option value="Hotel">Hotel</option>
+        <option value="Package">Package</option>
+        <option value="Flight">Flight</option>
+      </select>
+      <button class="btn btn-outline-secondary ms-3" (click)="loadAll()">Refresh</button>
+      <button class="btn btn-primary ms-3" (click)="cancelEdit()">New Review</button>
+    </div>
+  
+    <form [formGroup]="reviewForm" (ngSubmit)="submitForm()" class="mb-4" *ngIf="!editMode || editReview">
+      <div class="row g-2 align-items-end">
+        <div class="col-auto">
+          <label>Type</label>
+          <select formControlName="type" class="form-select">
+            <option value="Hotel">Hotel</option>
+            <option value="Package">Package</option>
+            <option value="Flight">Flight</option>
+          </select>
+        </div>
+        <div class="col-auto" *ngIf="reviewForm.value.type === 'Hotel'">
+          <label>Hotel ID</label>
+          <input formControlName="hotelId" class="form-control" type="number" />
+        </div>
+        <div class="col-auto" *ngIf="reviewForm.value.type === 'Package'">
+          <label>Package ID</label>
+          <input formControlName="packageId" class="form-control" type="number" />
+        </div>
+        <div class="col-auto" *ngIf="reviewForm.value.type === 'Flight'">
+          <label>Flight ID</label>
+          <input formControlName="flightId" class="form-control" type="number" />
+        </div>
+        <div class="col-auto">
+          <label>User ID</label>
+          <input formControlName="userID" class="form-control" type="number" />
+        </div>
+        <div class="col-auto">
+          <label>Rating</label>
+          <input formControlName="rating" class="form-control" type="number" min="1" max="5" />
+        </div>
+        <div class="col">
+          <label>Comment</label>
+          <input formControlName="comment" class="form-control" type="text" />
+        </div>
+        <div class="col-auto">
+          <button class="btn btn-success" type="submit">
+            {{ editMode ? 'Update' : 'Create' }}
+          </button>
+          <button *ngIf="editMode" class="btn btn-secondary ms-2" type="button" (click)="cancelEdit()">Cancel</button>
+        </div>
+      </div>
+    </form>
+  
+    <div *ngIf="loading" class="text-center my-5">
+      <div class="spinner-border text-primary"></div>
+      <p>Loading reviews...</p>
+    </div>
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+    <div *ngIf="!loading && filteredReviews().length === 0" class="text-center text-muted">
+      No reviews found for this filter.
+    </div>
+  
+    <div class="reviews-table" *ngIf="!loading && filteredReviews().length > 0">
+      <table class="table table-bordered table-striped align-middle">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>ID</th>
+            <th>User ID</th>
+            <th>Rating</th>
+            <th>Comment</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let r of filteredReviews()">
+            <td>
+              <span [style.color]="getTypeColor(r.type)" style="font-weight:700">
+                {{ r.type }}
+              </span>
+            </td>
+            <td>
+              <span *ngIf="r.type === 'Hotel'">Hotel: {{ r.hotelId }}</span>
+              <span *ngIf="r.type === 'Package'">Package: {{ r.packageId }}</span>
+              <span *ngIf="r.type === 'Flight'">Flight: {{ r.flightId }}</span>
+            </td>
+            <td>{{ r.userID }}</td>
+            <td>
+              <span class="stars">
+                <ng-container *ngFor="let s of [1,2,3,4,5]">
+                  <span [class.filled]="r.rating >= s">★</span>
+                </ng-container>
+              </span>
+              <span class="badge bg-secondary ms-2">{{ r.rating }}/5</span>
+            </td>
+            <td>{{ r.comment }}</td>
+            <td>{{ r.timestamp | date:'medium' }}</td>
+            <td>
+              <button class="btn btn-sm btn-danger" (click)="deleteReview(r)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

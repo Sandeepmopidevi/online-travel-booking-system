@@ -1,0 +1,90 @@
+<div class="invoice-container">
+  <h2>Your Invoices</h2>
+
+  <div *ngIf="isLoading" class="text-center">
+    <div class="spinner-border text-primary" style="width:2rem;height:2rem;" role="status"></div>
+    <p>Loading invoices...</p>
+  </div>
+
+  <div *ngIf="!isLoading && userInvoices.length">
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th>Invoice ID</th>
+            <th>Total Amount</th>
+            <th>Date/Time</th>
+            <th>Booking ID</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let invoice of userInvoices">
+            <td>{{ invoice.invoiceID }}</td>
+            <td>₹{{ invoice.totalAmount }}</td>
+            <td>{{ invoice.timestamp | date:'medium' }}</td>
+            <td>{{ invoice.bookingId }}</td>
+            <td>
+              <button class="btn btn-primary btn-sm" (click)="showInvoiceDetails(invoice)">View</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading && userInvoices.length === 0" class="text-center mt-4">
+    <p class="text-muted">No invoices found for your account.</p>
+  </div>
+</div>
+
+<!-- Invoice A4 Details & Download PDF -->
+<div *ngIf="selectedInvoice" id="invoice-detail-pdf" class="invoice-detail-modal">
+  <div #invoicePdf class="invoice-a4 p-4" style="background:#fff;max-width:800px;margin:20px auto;border:1px solid #eee;">
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <div>
+        <h3>Stayora Travels Pvt Ltd</h3>
+        <p>123, Main Road, Hyderabad, India</p>
+        <p>Email: support&#64;stayora.com</p>
+        <p>Phone: +91-9849012345</p>
+      </div>
+      <img src="assets/logo.png" alt="Company Logo" style="max-height: 60px;" />
+    </div>
+    <hr>
+    <h2 style="text-align:center;letter-spacing:2px;">INVOICE</h2>
+    <div style="margin-bottom:20px;">
+      <div>Invoice No: <strong>{{ selectedInvoice.invoiceID }}</strong></div>
+      <div>Date: <strong>{{ selectedInvoice.timestamp | date:'fullDate' }}</strong></div>
+      <div>User ID: <strong>{{ selectedInvoice.userID }}</strong></div>
+      <div>Booking ID: <strong>{{ selectedInvoice.bookingId }}</strong></div>
+    </div>
+    <table style="width:100%; border-collapse: collapse; margin-bottom:30px;">
+      <thead>
+        <tr style="background:#f8f8f8;">
+          <th style="border:1px solid #ddd;padding:10px;">Description</th>
+          <th style="border:1px solid #ddd;padding:10px;">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="border:1px solid #ddd;padding:10px;">Travel Booking Charges</td>
+          <td style="border:1px solid #ddd;padding:10px;">₹{{ selectedInvoice.totalAmount }}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td style="border:1px solid #ddd;padding:10px;text-align:right;font-weight:bold;">Total</td>
+          <td style="border:1px solid #ddd;padding:10px;font-weight:bold;">₹{{ selectedInvoice.totalAmount }}</td>
+        </tr>
+      </tfoot>
+    </table>
+    <div style="font-size:0.95em;color:#555;">
+      <p><strong>Thank you for booking with Stayora!</strong></p>
+      <p>This is a computer-generated invoice and does not require a signature.</p>
+    </div>
+  </div>
+  <div style="text-align:center;">
+    <button class="btn btn-success" (click)="downloadPDF()">Download PDF</button>
+    <button class="btn btn-secondary" (click)="selectedInvoice = null" style="margin-left:10px;">Close</button>
+  </div>
+</div>

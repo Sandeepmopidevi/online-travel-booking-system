@@ -1,0 +1,17 @@
+.main-layout {
+  display: flex;
+}
+
+.content-area {
+  margin-left: 220px;
+  padding: 20px;
+  width: calc(100% - 220px);
+  min-height: calc(100vh - 70px);
+  background-color: #f8f9fa;
+  transition: margin-left 0.3s, width 0.3s;
+}
+
+.content-area.expanded {
+  margin-left: 70px;
+  width: calc(100% - 70px);
+}

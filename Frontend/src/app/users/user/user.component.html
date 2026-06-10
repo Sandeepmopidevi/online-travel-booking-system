@@ -1,0 +1,57 @@
+<div class="container mt-4">
+  <h2 class="text-center title">Your Details</h2>
+
+  <!-- Loading Spinner -->
+  <div *ngIf="isLoading" class="text-center mt-4">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="!isLoading && errorMessage" class="alert alert-danger mt-4 error-box">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Success Message -->
+  <div *ngIf="!isLoading && updateSuccess" class="alert alert-success mt-4">
+    Profile updated successfully!
+  </div>
+
+  <!-- Current User Details -->
+  <div *ngIf="!isLoading && currentUser" class="mt-4 user-details fade-in">
+    <div class="card shadow">
+      <div class="card-body">
+        <h4 class="card-title">User Information</h4>
+        <p class="card-text"><strong>ID:</strong> {{ currentUser.userId }}</p>
+        <p class="card-text"><strong>Name:</strong> {{ currentUser.name }}</p>
+        <p class="card-text"><strong>Email:</strong> {{ currentUser.email }}</p>
+        <p class="card-text"><strong>Role:</strong> {{ currentUser.role }}</p>
+        <p class="card-text"><strong>Contact Number:</strong> {{ currentUser.contactNumber }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Update Profile Section -->
+  <div *ngIf="!isLoading && currentUser" class="mt-4 fade-in">
+    <button *ngIf="!isEditingProfile" (click)="enableEditProfile()" class="btn btn-primary">Edit Profile</button>
+    <div *ngIf="isEditingProfile" class="card mt-3">
+      <div class="card-body">
+        <h5 class="card-title">Update Profile</h5>
+        <form (ngSubmit)="saveProfile()" #profileForm="ngForm">
+          <div class="mb-3">
+            <label for="updateName" class="form-label">Name</label>
+            <input id="updateName" [(ngModel)]="updateName" name="updateName" class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label for="updateContact" class="form-label">Contact Number</label>
+            <input id="updateContact" [(ngModel)]="updateContact" name="updateContact" class="form-control" required />
+          </div>
+          <div *ngIf="updateError" class="alert alert-danger">{{ updateError }}</div>
+          <button type="submit" [disabled]="!profileForm.form.valid" class="btn btn-success me-2">Save</button>
+          <button type="button" (click)="cancelEditProfile()" class="btn btn-secondary">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="container">
+  <h1>Send Email</h1>
+  <form (ngSubmit)="sendEmail()">
+    <div class="form-group">
+      <label for="to">Recipient Email</label>
+      <input 
+        type="email" 
+        id="to" 
+        class="form-control" 
+        [(ngModel)]="emailRequest.to" 
+        name="to" 
+        placeholder="Enter recipient email" 
+        required>
+    </div>
+
+    <div class="form-group">
+      <label for="subject">Subject</label>
+      <input 
+        type="text" 
+        id="subject" 
+        class="form-control" 
+        [(ngModel)]="emailRequest.subject" 
+        name="subject" 
+        placeholder="Enter email subject" 
+        required>
+    </div>
+
+    <div class="form-group">
+      <label for="body">Message</label>
+      <textarea 
+        id="body" 
+        class="form-control" 
+        [(ngModel)]="emailRequest.body" 
+        name="body" 
+        rows="5" 
+        placeholder="Enter your message" 
+        required>
+      </textarea>
+    </div>
+
+    <button 
+      type="submit" 
+      class="btn btn-primary mt-3" 
+      [disabled]="isLoading">
+      {{ isLoading ? 'Sending...' : 'Send Email' }}
+    </button>
+  </form>
+</div>

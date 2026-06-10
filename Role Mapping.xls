@@ -1,0 +1,80 @@
+End Points	Admin	Traveller	Hotel Manager	Travel Agent
+User - post	TRUE	TRUE		
+User - get	TRUE		TRUE	TRUE
+User - get  id	TRUE		TRUE	TRUE
+User - put	TRUE	TRUE		
+User - delete	TRUE			
+				
+Booking -post		TRUE		
+Booking - get	TRUE		TRUE	
+Booking - get by id	TRUE		TRUE	
+Booking - put	TRUE		TRUE	
+Booking - delete	TRUE		TRUE	
+Booking - Search	TRUE	TRUE	TRUE	TRUE
+				
+ContactUs - post	TRUE	TRUE	TRUE	TRUE
+ContactUs - get	TRUE	TRUE	TRUE	TRUE
+				
+Flight - post	TRUE			
+Flight - get	TRUE	TRUE		
+Flight - get by id	TRUE			
+Flight - put	TRUE			
+Flight - delete	TRUE			
+Flight - Search	TRUE	TRUE		TRUE
+				
+Flight Review - post	TRUE	TRUE		
+Flight Review - get	TRUE	TRUE		
+Flight Review - get by id	TRUE	TRUE		
+Flight Review - put	TRUE	TRUE		
+Flight Review - delete	TRUE	TRUE		
+				
+Hotel - post	TRUE		TRUE	
+Hotel - get	TRUE	TRUE	TRUE	
+Hotel - get by id	TRUE		TRUE	
+Hotel - put	TRUE		TRUE	
+Hotel - delete	TRUE		TRUE	
+Hotel - Search	TRUE	TRUE	TRUE	TRUE
+				
+Hotel Review - post	TRUE	TRUE		
+Hotel Review - get	TRUE	TRUE	TRUE	
+Hotel Review - get by id	TRUE		TRUE	
+Hotel Review - put	TRUE	TRUE		
+Hotel Review - delete	TRUE	TRUE		
+				
+Invoice - post	TRUE			
+Invoice - get	TRUE			
+Invoice - get by id	TRUE	TRUE		
+Invoice - put	TRUE			
+Invoice - delete	TRUE			
+				
+Itinerary - post		TRUE		
+Itinerary - get	TRUE			
+Itinerary - get by id	TRUE	TRUE		
+Itinerary - put	TRUE	TRUE		TRUE
+Itinerary - delete	TRUE	TRUE		
+Itinerary - Search	TRUE	TRUE	TRUE	TRUE
+				
+Package - post	TRUE			
+Package - get	TRUE	TRUE		TRUE
+Package - get by id	TRUE	TRUE		
+Package - put	TRUE			
+Package - delete	TRUE			
+Package - Search	TRUE	TRUE		TRUE
+				
+Package Review - post	TRUE	TRUE		
+Package Review - get	TRUE	TRUE		TRUE
+Package Review - get by id	TRUE	TRUE		TRUE
+Package Review - put	TRUE	TRUE		
+Package Review - delete	TRUE	TRUE		
+				
+Payment - post		TRUE		
+Payment - get	TRUE			
+Payment - get by id	TRUE	TRUE		
+Payment - put	TRUE			
+Payment - delete	TRUE			
+				
+support ticket - post		TRUE		
+support ticket - get	TRUE			
+support ticket - get by id	TRUE	TRUE		
+support ticket - put	TRUE	TRUE		
+support ticket - delete	TRUE			

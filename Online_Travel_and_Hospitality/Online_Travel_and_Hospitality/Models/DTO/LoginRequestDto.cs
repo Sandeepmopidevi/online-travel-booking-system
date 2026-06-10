@@ -1,0 +1,8 @@
+﻿namespace Online_Travel_and_Hospitality.DTO
+{
+    public class LoginRequestDto
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+}
